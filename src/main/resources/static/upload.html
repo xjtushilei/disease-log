@@ -62,6 +62,7 @@
 //        allowedFileExtensions: ["xls"]
     });
     $('#input').on('fileuploaded', function (event, data, previewId, index) {
+        console.log(data)
         response = data.response
         console.log(response)
         $("#tishi").html(response.data);

@@ -77,8 +77,8 @@ public class LogController {
 
 
     @RequestMapping(value = "/uploadlog", method = RequestMethod.POST)
-    public Map uploadlog(MultipartFile file) throws IOException {
-        Map<String, Object> result = new HashMap();
+    public HashMap uploadlog(MultipartFile file) throws IOException {
+        HashMap<String, Object>  result = new HashMap();
         long count = 0;
         long log_count = 0;
         InputStream in = file.getInputStream();
@@ -116,10 +116,8 @@ public class LogController {
                     count++;
                 }
             } catch (Exception e) {
-                e.printStackTrace();
                 logger.error(e.getMessage(), e);
-                result.put("error", e.getMessage());
-
+                result.put("data", e.getMessage());
             }
         }
         String re = "新加个数：" + String.valueOf(count) + ", 有效日志总个数:" + log_count + ",总行数:" + String.valueOf(logFileList.size());
