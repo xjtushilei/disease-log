@@ -11,7 +11,8 @@ var vm = new Vue({
         note: "",
         name: "输入名字",
         tableobj:{},
-        notesum:10
+        notesum:10,
+        all_log:[]
     },
     methods: {
         init: function () {
@@ -27,7 +28,6 @@ var vm = new Vue({
                     , {field: 'dob', title: '出生日期'}
                     , {field: 'cardNo', title: 'cardNo'}
                     , {field: 'tishi', title: '问答详情', event: 'questions', style: 'cursor: pointer;'}
-                    , {field: 'tishi', title: '推荐结果', event: 'recommendation', style: 'cursor: pointer;'}
                     , {field: 'tishi', title: 'all_log', event: 'all_log', style: 'cursor: pointer;'}
                     , {field: 'tishi', title: '评论', event: 'notes', style: 'cursor: pointer;'}
                     , {field: 'noteSum', title: '评论数量'}
@@ -55,17 +55,13 @@ var vm = new Vue({
                     $('#questions').modal('toggle')
                     vm.questions = JSON.parse(data.questions)
                     vm.finalDisease = JSON.parse(data.finalDisease)
+                    vm.recommendation = JSON.parse(data.recommendation)
                     console.log(vm.finalDisease)
                 }
-                else if (obj.event === 'recommendation') {
-                    $('#recommendation').modal('toggle')
-                    vm.recommendation = JSON.parse(data.recommendation)
-                    console.log(vm.recommendation)
-                }
                 else if (obj.event === 'all_log') {
-                    $('#recommendation').modal('toggle')
-                    vm.recommendation = JSON.parse(data.allLog)
-                    console.log(vm.recommendation)
+                    $('#alllog').modal('toggle')
+                    vm.all_log = JSON.parse(data.allLog)
+                    console.log(vm.all_log)
                 } else if (obj.event === 'notes') {
                     vm.sessionId = data.sessionId
                     vm.getnotes()

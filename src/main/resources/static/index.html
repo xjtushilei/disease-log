@@ -12,22 +12,16 @@
 <body>
 <div id="main">
     <div class="text-center">
-        <h1 style="font-size: 30px;margin-top: 10px;margin-bottom: 10px">智能问诊-日志监控</h1>
+        <h1 style="font-size: 30px;margin-top: 10px;margin-bottom: 10px">智能问诊-日志监控(医生查看版本)</h1>
     </div>
     <div>
         <table id="table" lay-filter="demoEvent"></table>
     </div>
-    <!-- 模态框 questions -->
-    <div class="modal fade" id="questions" tabindex="-1" role="dialog" aria-labelledby="questions" aria-hidden="true">
+    <!-- 模态框 recommendation -->
+    <div class="modal fade" id="recommendation" tabindex="-1" role="dialog" aria-labelledby="recommendation" aria-hidden="true">
         <div class="modal-dialog" style="width:80%">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    </button>
-                    <h4 class="modal-title">
-                        多轮问答详情与疾病诊断
-                    </h4>
-                </div>
+
                 <div class="modal-body">
                     <table class="table">
                         <caption>多轮问答详情</caption>
@@ -48,51 +42,12 @@
                             <td v-text="x.choices"></td>
                             <td v-text="x.choice"></td>
                         </tr>
-
                         </tbody>
                     </table>
-                    <table class="table">
-                        <caption>疾病诊断</caption>
-                        <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>ICD10名字</th>
-                            <th>ICD10编码</th>
-                            <th>可信度</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="x,index in finalDisease">
-                            <td v-text="index"></td>
-                            <td v-text="x[0]"></td>
-                            <td v-text="x[2]"></td>
-                            <td v-text="x[1]"></td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div>
-    </div><!-- /.modal -->
-    <!-- 模态框 recommendation -->
-    <div class="modal fade" id="recommendation" tabindex="-1" role="dialog" aria-labelledby="recommendation" aria-hidden="true">
-        <div class="modal-dialog" style="width:80%">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    </button>
-                    <h4 class="modal-title">
-                        医生或科室
-                    </h4>
-                </div>
-                <div class="modal-body">
                     <div>
+                        <div style="padding-bottom: 8px">
+                            <h4>推荐结果</h4>
+                        </div>
                         <pre v-text="recommendation"></pre>
                     </div>
                 </div>

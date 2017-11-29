@@ -13,16 +13,23 @@ public class FormLoginSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();
+        http.cors().disable();
+
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").hasRole("USER")
+                .antMatchers("/", "/index.html", "/api/**").hasAnyRole("admin", "doctor")
+                .antMatchers("/admin.html", "/upload.html").hasRole("admin")
                 .and()
+//                .formLogin().loginPage("").successForwardUrl("/index.html").failureForwardUrl("/login.html");
                 .formLogin();
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user").password("jerry").roles("USER");
+                .withUser("user").password("jerry").roles("doctor")
+                .and()
+                .withUser("admin").password("jerryadmin").roles("admin");
     }
 }

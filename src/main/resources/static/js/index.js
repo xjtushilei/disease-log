@@ -26,8 +26,8 @@ var vm = new Vue({
                     , {field: 'sex', title: '性别'}
                     , {field: 'dob', title: '出生日期'}
                     , {field: 'cardNo', title: 'cardNo'}
-                    , {field: 'tishi', title: '问答详情', event: 'questions', style: 'cursor: pointer;'}
-                    , {field: 'tishi', title: '推荐结果', event: 'recommendation', style: 'cursor: pointer;'}
+                    // , {field: 'tishi', title: '问答详情', event: 'questions', style: 'cursor: pointer;'}
+                    , {field: 'tishi', title: '问答及其结果', event: 'recommendation', style: 'cursor: pointer;'}
                     , {field: 'tishi', title: '评论', event: 'notes', style: 'cursor: pointer;'}
                     , {field: 'noteSum', title: '评论数量'}
                 ]]
@@ -50,13 +50,10 @@ var vm = new Vue({
                 vm.notesum=obj.data.noteSum
                 var data = obj.data;
                 console.log(data)
-                if (obj.event === 'questions') {
-                    $('#questions').modal('toggle')
+                if (obj.event === 'recommendation') {
                     vm.questions = JSON.parse(data.questions)
                     vm.finalDisease = JSON.parse(data.finalDisease)
                     console.log(vm.finalDisease)
-                }
-                else if (obj.event === 'recommendation') {
                     $('#recommendation').modal('toggle')
                     vm.recommendation = JSON.parse(data.recommendation)
                     console.log(vm.recommendation)

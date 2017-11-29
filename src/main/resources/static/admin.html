@@ -12,7 +12,7 @@
 <body>
 <div id="main">
     <div class="text-center">
-        <h1 style="font-size: 30px;margin-top: 10px;margin-bottom: 10px">智能问诊-日志监控</h1>
+        <h1 style="font-size: 30px;margin-top: 10px;margin-bottom: 10px">智能问诊-日志监控（内部版本）</h1>
     </div>
     <div>
         <table id="table" lay-filter="demoEvent"></table>
@@ -71,7 +71,9 @@
 
                         </tbody>
                     </table>
-
+                    <div>
+                        <pre v-text="recommendation"></pre>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -80,13 +82,13 @@
             </div><!-- /.modal-content -->
         </div>
     </div><!-- /.modal -->
-    <!-- 模态框 recommendation -->
-    <div class="modal fade" id="recommendation" tabindex="-1" role="dialog" aria-labelledby="recommendation" aria-hidden="true">
+    <!-- 模态框 alllog -->
+    <div class="modal fade" id="alllog" tabindex="-1" role="dialog" aria-labelledby="alllog" aria-hidden="true">
         <div class="modal-dialog" style="width:80%">
             <div class="modal-content">
                 <div class="modal-body">
                     <div>
-                        <pre v-text="recommendation"></pre>
+                        <pre v-text="all_log"></pre>
                     </div>
                 </div>
                 <div class="modal-footer">
