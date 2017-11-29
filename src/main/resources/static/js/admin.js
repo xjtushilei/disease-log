@@ -11,6 +11,7 @@ var vm = new Vue({
         note: "",
         name: "输入名字",
         tableobj:{},
+        notesum:10
     },
     methods: {
         init: function () {
@@ -37,6 +38,8 @@ var vm = new Vue({
                 , method: 'get'
                 , even: true //开启隔行背景
                 , page: true
+                ,limit:20
+                ,limits:[10,20,25,30,40,50,60,70,80,90]
                 , skin: 'nob' //行边框风格
                 , size: 'sm' //小尺寸的表格
 
@@ -45,6 +48,7 @@ var vm = new Vue({
             //监听单元格事件
             table.on('tool(demoEvent)', function (obj) {
                 tableobj=obj
+                vm.notesum=obj.data.noteSum
                 var data = obj.data;
                 console.log(data)
                 if (obj.event === 'questions') {
@@ -78,10 +82,10 @@ var vm = new Vue({
                     console.log(data)
                     vm.getnotes()
                     vm.note = ""
-                    notesum=tableobj.data.noteSum
+                    vm.notesum=vm.notesum+1
                     tableobj.update(
                         {
-                            noteSum:notesum+1
+                            noteSum:vm.notesum
                         }
                     )
                 }
@@ -96,7 +100,12 @@ var vm = new Vue({
                     success: function (data) {
                         console.log(data)
                         vm.getnotes()
-                        alert(data)
+                        vm.notesum=vm.notesum-1
+                        tableobj.update(
+                            {
+                                noteSum:vm.notesum
+                            }
+                        )
                     }
                 });
             }

@@ -54,7 +54,8 @@
     $("#input").fileinput({
         uploadUrl: '/api/log/uploadlog', // you must set a valid URL here else you will get an error
         language: 'zh',
-        showCaption: false,
+        showCaption:true,
+        showPreview:false,
         maxFileSize : 100000,  //kb
         initialCaption: "请选择日志文件",
         // showUpload: false,

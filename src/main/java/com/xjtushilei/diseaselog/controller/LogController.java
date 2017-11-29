@@ -78,10 +78,10 @@ public class LogController {
 
     @RequestMapping(value = "/uploadlog", method = RequestMethod.POST)
     public Map uploadlog(MultipartFile file) throws IOException {
-        Map<String,Object> result=new HashMap();
+        Map<String, Object> result = new HashMap();
         long count = 0;
         long log_count = 0;
-        InputStream in=file.getInputStream();
+        InputStream in = file.getInputStream();
         List<String> logFileList = IOUtils.readLines(in, "utf-8");
         for (String str : logFileList) {
             try {
@@ -115,18 +115,17 @@ public class LogController {
                     intelligentInterrogationLogfRepository.save(log);
                     count++;
                 }
-                String re = "新加个数：" + String.valueOf(count) + ", 有效日志总个数:" + log_count + ",总行数:" + String.valueOf(logFileList.size());
-                logger.info(re);
-                result.put("data",re);
-                in.close();
             } catch (Exception e) {
-                in.close();
                 e.printStackTrace();
                 logger.error(e.getMessage(), e);
-                result.put("data",e.getMessage());
+                result.put("error", e.getMessage());
 
             }
         }
+        String re = "新加个数：" + String.valueOf(count) + ", 有效日志总个数:" + log_count + ",总行数:" + String.valueOf(logFileList.size());
+        logger.info(re);
+        result.put("data", re);
+        in.close();
         return result;
     }
 
