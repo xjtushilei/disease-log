@@ -22,7 +22,7 @@ var vm = new Vue({
                     {field: 'sessionId', title: 'id'}
                     , {field: 'time', title: '时间'}
                     , {field: 'status', title: '最后状态'}
-                    , {field: 'name', title: '姓名'}
+                    // , {field: 'name', title: '姓名'}
                     , {field: 'sex', title: '性别'}
                     , {field: 'dob', title: '出生日期'}
                     , {field: 'cardNo', title: 'cardNo'}
