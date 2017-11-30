@@ -30,6 +30,6 @@ public class FormLoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("user").password("jerry").roles("doctor")
                 .and()
-                .withUser("admin").password("jerryadmin").roles("admin");
+                .withUser("admin").password("jerryadmin3gqq").roles("admin");
     }
 }
