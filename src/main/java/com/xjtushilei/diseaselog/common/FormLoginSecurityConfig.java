@@ -18,7 +18,7 @@ public class FormLoginSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/index.html", "/api/**").hasAnyRole("admin", "doctor")
-                .antMatchers("/admin.html", "/upload.html").hasRole("admin")
+                .antMatchers("/admin.html", "/upload.html","/h2-console/**").hasRole("admin")
                 .and()
 //                .formLogin().loginPage("").successForwardUrl("/index.html").failureForwardUrl("/login.html");
                 .formLogin();
